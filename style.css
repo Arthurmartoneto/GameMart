@@ -378,6 +378,22 @@ h1,h2,h3,h4,h5,h6 {
 .banner-ad.blue {
   background: #e6f3fb;
 }
+.banner-ad.bg-white-translucent {
+  background: rgba(255, 255, 255, 0.7); /* branco com 70% de opacidade */
+  color: black;
+}
+.banner-ad.bg-green {
+  background: rgba(133, 187, 237, 0.7) url('images/ad-image-1.png') no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+  color: black;
+}
+.banner-ad.bg-black {
+  background: rgba(0, 0, 0, 0.7) url('images/ad-image-2.png') no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+  color: white;
+}
 .banner-ad .swiper-pagination {
   bottom: 40px;
   left: 0;
@@ -392,7 +408,7 @@ h1,h2,h3,h4,h5,h6 {
   transition: background 0.3s ease-out;
 }
 .banner-ad .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
-  background: #FFC43F;
+  background: #000000;
 }
 .banner-ad .swiper-slide {
   min-height: 630px;
@@ -416,20 +432,19 @@ h1,h2,h3,h4,h5,h6 {
 }
 .banner-ad .banner-content .sale:before {
   content: '';
-  width: 80px;
-  border-bottom: 1px solid #111;
+  width: 110px;
+  border-bottom: 1px solid #f9f6f6;
   position: absolute;
   bottom: 6px;
 }
 .banner-ad .banner-content .sale:after {
-  content: 'SALE';
   font-family: var(--body-font);
   position: absolute;
   font-size: 11px;
   line-height: 15px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #252525;
+  color: #ffffff;
   bottom: 0;
   right: 0;
 }
