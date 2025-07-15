@@ -212,3 +212,91 @@ function renderCart() {
 // 🔁 Rendeza carrinho ao carregar a página
 renderCart();
 
+
+const searchInput = document.getElementById("search-input");
+const searchSuggestions = document.getElementById("search-suggestions");
+
+const produtos = [
+  { nome: "the last of us part I", id: "produto-the-last-of-us" },
+  { nome: "god of war ragnarok", id: "produto-gow-ragnarok" },
+  { nome: "spider-man 2", id: "produto-spiderman2" },
+  { nome: "elden ring", id: "produto-elden-ring" },
+  { nome: "final fantasy xvi", id: "produto-ffxvi" },
+  { nome: "resident evil 4 remake", id: "produto-re4-remake" },
+  { nome: "call of duty mw3", id: "produto-cod-mw3" },
+  { nome: "gran turismo 7", id: "produto-gt7" },
+  { nome: "mortal kombat 1", id: "produto-mk1" },
+  { nome: "horizon forbidden west", id: "produto-horizon" },
+
+  // Funkos
+  { nome: "funko kratos", id: "produto-funko-kratos" },
+  { nome: "funko venom", id: "produto-funko-venom" },
+  { nome: "funko batman", id: "produto-funko-batman" },
+  { nome: "funko spiderman", id: "produto-funko-spiderman" },
+  { nome: "funko iron man", id: "produto-funko-ironman" },
+  { nome: "funko darth vader", id: "produto-funko-darthvader" },
+  { nome: "funko goku", id: "produto-funko-goku" },
+  { nome: "funko vegeta", id: "produto-funko-vegeta" },
+  { nome: "funko harry potter", id: "produto-funko-harrypotter" },
+  { nome: "funko eleven", id: "produto-funko-eleven" }
+];
+
+searchInput.addEventListener("input", function () {
+  const termo = this.value.trim().toLowerCase();
+  searchSuggestions.innerHTML = "";
+
+  if (termo.length < 2) return;
+
+  const sugestoes = produtos.filter(produto => produto.nome.includes(termo));
+
+  if (sugestoes.length === 0) {
+    searchSuggestions.innerHTML = `<li class="list-group-item disabled">Nenhum produto encontrado</li>`;
+    return;
+  }
+
+  sugestoes.forEach(produto => {
+    const li = document.createElement("li");
+    li.className = "list-group-item list-group-item-action";
+    li.textContent = produto.nome;
+    li.addEventListener("click", () => {
+      const el = document.getElementById(produto.id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        searchInput.value = produto.nome;
+        searchSuggestions.innerHTML = "";
+      }
+    });
+    searchSuggestions.appendChild(li);
+  });
+});
+
+// Oculta as sugestões quando clica fora
+document.addEventListener("click", (e) => {
+  if (!document.getElementById("search-form").contains(e.target)) {
+    searchSuggestions.innerHTML = "";
+  }
+});
+
+document.getElementById('search-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+});
+
+const offcanvasSearchInput = document.getElementById("offcanvas-search-input");
+const offcanvasSearchBtn = document.getElementById("offcanvas-search-btn");
+
+offcanvasSearchBtn.addEventListener("click", () => {
+  const termo = offcanvasSearchInput.value.trim().toLowerCase();
+  if (termo.length < 2) {
+    alert("Digite ao menos 2 letras para buscar.");
+    return;
+  }
+  // Aqui você pode rodar sua função de busca, abrir a lista de sugestões ou navegar pro produto
+  console.log("Buscar por:", termo);
+});
+
+offcanvasSearchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    offcanvasSearchBtn.click();
+  }
+});

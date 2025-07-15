@@ -125,8 +125,7 @@
       </div>
     </div>
   </div>
-
-
+  <!-- OFFCANVAS DE PESQUISA -->
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch"
     aria-labelledby="Search">
     <div class="offcanvas-header justify-content-center">
@@ -137,10 +136,10 @@
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Pesquisar</span>
         </h4>
-        <form role="search" action="index.html" method="get" class="d-flex mt-3 gap-0">
-          <input class="form-control rounded-start rounded-0 bg-light" type="email"
+        <form role="search" method="get" class="d-flex mt-3 gap-0" onsubmit="return false;">
+          <input id="offcanvas-search-input" class="form-control rounded-start rounded-0 bg-light" type="text"
             placeholder="O que você está procurando?" aria-label="O que você está procurando?">
-          <button class="btn btn-dark rounded-end rounded-0" type="submit">Pesquisar</button>
+          <button id="offcanvas-search-btn" class="btn btn-dark rounded-end rounded-0" type="button">Pesquisar</button>
         </form>
       </div>
     </div>
@@ -170,9 +169,11 @@
               </select>
             </div>
             <div class="col-11 col-md-7">
-              <form id="search-form" class="text-center" action="index.html" method="post">
-                <input type="text" class="form-control border-0 bg-transparent"
+              <form id="search-form" class="text-center position-relative" autocomplete="off" method="get" action="#">
+                <input type="text" id="search-input" class="form-control border-0 bg-transparent"
                   placeholder="O que está procurando hoje?" />
+                <ul id="search-suggestions" class="list-group position-absolute w-100" style="top: 100%; z-index: 999;">
+                </ul>
               </form>
             </div>
             <div class="col-1">
@@ -351,27 +352,27 @@
 
           <div class="category-carousel swiper">
             <div class="swiper-wrapper">
-              <a href="index.html" class="nav-link category-item swiper-slide">
+              <a class="nav-link category-item swiper-slide">
                 <img src="images/icon-PS.png" alt="Category Thumbnail">
                 <h3 class="category-title">Classic</h3>
               </a>
-              <a href="index.html" class="nav-link category-item swiper-slide">
+              <a class="nav-link category-item swiper-slide">
                 <img src="images/icon-PS5.png" alt="Category Thumbnail">
                 <h3 class="category-title">PS5</h3>
               </a>
-              <a href="index.html" class="nav-link category-item swiper-slide">
+              <a class="nav-link category-item swiper-slide">
                 <img src="images/icon-PS4.png" alt="Category Thumbnail">
                 <h3 class="category-title">PS4</h3>
               </a>
-              <a href="index.html" class="nav-link category-item swiper-slide">
+              <a class="nav-link category-item swiper-slide">
                 <img src="images/icon-kratos.png" alt="Category Thumbnail">
                 <h3 class="category-title">Exploração</h3>
               </a>
-              <a href="index.html" class="nav-link category-item swiper-slide">
+              <a class="nav-link category-item swiper-slide">
                 <img src="images/icon-puzzle.png" alt="Category Thumbnail">
                 <h3 class="category-title">Puzzle</h3>
               </a>
-              <a href="index.html" class="nav-link category-item swiper-slide">
+              <a class="nav-link category-item swiper-slide">
                 <img src="images/icon-arcade.png" alt="Category Thumbnail">
                 <h3 class="category-title">Arcade</h3>
               </a>
@@ -384,6 +385,7 @@
     </div>
   </section>
 
+  <!-- produtos -->
   <section class="py-3">
     <div class="container-fluid">
       <div class="row">
@@ -400,9 +402,9 @@
               <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
                 <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
-                  <div class="col">
+                  <div class="col" id="produto-the-last-of-us">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/the-last-of-us-part-i.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/the-last-of-us-part-i.png" class="tab-image"></a></figure>
                       <h3>The Last of Us Part I (PS5)</h3>
                       <span class="qty d-block">Mídia Digital</span>
                       <span class="rating d-block mb-2">
@@ -416,9 +418,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-gow-ragnarok">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/gow-ragnarok-thumb.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/gow-ragnarok-thumb.png" class="tab-image"></a></figure>
                       <h3>God of War: Ragnarok (PS4/PS5)</h3>
                       <span class="qty d-block">Mídia Digital</span>
                       <span class="rating d-block mb-2">
@@ -432,9 +434,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-spiderman2">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/spider-man2.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/spider-man2.png" class="tab-image"></a></figure>
                       <h3>Spider-Man 2 (PS5)</h3>
                       <span class="qty d-block">Mídia Física</span>
                       <span class="rating d-block mb-2">
@@ -448,9 +450,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-elden-ring">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/elden-ring.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/elden-ring.png" class="tab-image"></a></figure>
                       <h3>Elden Ring (PS4/PS5)</h3>
                       <span class="qty d-block">Mídia Física</span>
                       <span class="rating d-block mb-2">
@@ -464,7 +466,7 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-ffxvi">
                     <div class="product-item text-center">
                       <figure><a href="#"><img src="images/ffxvi.png" class="tab-image"></a></figure>
                       <h3>Final Fantasy XVI (PS5)</h3>
@@ -480,9 +482,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-horizon-fw">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/horizon-fw.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/horizon-fw.png" class="tab-image"></a></figure>
                       <h3>Horizon Forbidden West (PS4/PS5)</h3>
                       <span class="qty d-block">Mídia Física</span>
                       <span class="rating d-block mb-2">
@@ -496,9 +498,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-re4-remake">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/re4-remake.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/re4-remake.png" class="tab-image"></a></figure>
                       <h3>Resident Evil 4 Remake (PS4/PS5)</h3>
                       <span class="qty d-block">Mídia Digital</span>
                       <span class="rating d-block mb-2">
@@ -512,9 +514,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-mw3">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/cod-mw3.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/cod-mw3.png" class="tab-image"></a></figure>
                       <h3>Call of Duty: MW3 (PS4/PS5)</h3>
                       <span class="qty d-block">Mídia Física</span>
                       <span class="rating d-block mb-2">
@@ -528,9 +530,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-gt7">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/gt7.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/gt7.png" class="tab-image"></a></figure>
                       <h3>Gran Turismo 7 (PS5)</h3>
                       <span class="qty d-block">Mídia Física</span>
                       <span class="rating d-block mb-2">
@@ -544,9 +546,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-mk1">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/mk1.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/mk1.png" class="tab-image"></a></figure>
                       <h3>Mortal Kombat 1 (PS5)</h3>
                       <span class="qty d-block">Mídia Digital</span>
                       <span class="rating d-block mb-2">
@@ -578,9 +580,9 @@
               <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
                 <div class="product-grid row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-kratos">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-kratos.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-kratos.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Kratos #269</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -592,9 +594,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-venom">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-venom.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-venom.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Venom #363</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -606,9 +608,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-batman">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-batman.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-batman.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Batman #144</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -620,9 +622,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-spiderman">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-spiderman.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-spiderman.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Spider-Man #03</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -634,9 +636,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-ironman">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-ironman.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-ironman.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Iron Man #626</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -648,9 +650,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-darthvader">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-darthvader.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-darthvader.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Darth Vader #157</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -662,10 +664,10 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-goku">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-goku.png" class="tab-image"></a></figure>
-                      <h3>Funko Pop Goku #849</h3>
+                      <figure><a><img src="images/funko-goku.png" class="tab-image"></a></figure>
+                      <h3>Funko Pop Goku #517</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
                           <use xlink:href="#star-solid"></use>
@@ -676,9 +678,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-vegeta">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-vegeta.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-vegeta.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Vegeta #10</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -690,9 +692,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-harrypotter">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-harrypotter.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-harrypotter.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Harry Potter #01</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -704,9 +706,9 @@
                     </div>
                   </div>
 
-                  <div class="col">
+                  <div class="col" id="produto-funko-eleven">
                     <div class="product-item text-center">
-                      <figure><a href="#"><img src="images/funko-eleven.png" class="tab-image"></a></figure>
+                      <figure><a><img src="images/funko-eleven.png" class="tab-image"></a></figure>
                       <h3>Funko Pop Eleven #421</h3>
                       <span class="qty d-block">Colecionável</span>
                       <span class="rating d-block mb-2"><svg width="24" height="24" class="text-primary">
@@ -901,7 +903,8 @@
               <h3 class="post-title mb-2">God of War: Ragnarok (PS5)</h3>
               <p>Viva a jornada épica de Kratos e Atreus em uma aventura cheia de ação, mitologia e emoção.</p>
               <span class="price fw-bold text-primary d-block mb-2">R$ 149,90</span>
-              <a href="#" class="btn btn-primary text-uppercase px-4 py-2 mt-2">Comprar Agora</a>
+              <a class="btn btn-primary text-uppercase px-4 py-2 mt-2 add-to-cart"
+                data-name="God of War: Ragnarok (PS5)" data-price="149,90">Comprar Agora</a>
             </div>
           </article>
         </div>
@@ -918,7 +921,8 @@
               <h3 class="post-title mb-2">Marvel's Spider-Man 2 (PS5)</h3>
               <p>Encare novas ameaças com Peter e Miles em uma Nova York ainda mais imersiva e eletrizante.</p>
               <span class="price fw-bold text-primary d-block mb-2">R$ 199,90</span>
-              <a href="#" class="btn btn-primary text-uppercase px-4 py-2 mt-2">Comprar Agora</a>
+              <a class="btn btn-primary text-uppercase px-4 py-2 mt-2 add-to-cart"
+                data-name="Marvel's Spider-Man 2 (PS5)" data-price="199,90">Comprar Agora</a>
             </div>
           </article>
         </div>
@@ -935,7 +939,8 @@
               <h3 class="post-title mb-2">Elden Ring (PS5)</h3>
               <p>Explore um mundo vasto e sombrio criado por George R. R. Martin e desafie os deuses da dificuldade.</p>
               <span class="price fw-bold text-primary d-block mb-2">R$ 179,90</span>
-              <a href="#" class="btn btn-primary text-uppercase px-4 py-2 mt-2">Comprar Agora</a>
+              <a class="btn btn-primary text-uppercase px-4 py-2 mt-2 add-to-cart" data-name="Elden Ring (PS5)"
+                data-price="179,90">Comprar Agora</a>
             </div>
           </article>
         </div>
